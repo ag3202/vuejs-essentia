@@ -5,11 +5,13 @@
   "author": "ag3202 <ag3202>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js ",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0",
     "vue": "^2.5.2"
   },
   "devDependencies": {

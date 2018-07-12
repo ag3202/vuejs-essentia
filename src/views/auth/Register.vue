@@ -90,15 +90,14 @@
                         if (localUser.name === user.name) {
                             this.showMsg('用户名已存在')
                         } else {
-                            this.login(user)
+                            this.$store.dispatch('login', user)
                         }
                     } else {
-                        this.login(user)
+                        this.$store.dispatch('login', user)
                     }
                 }
             },
             login(user) {
-                ls.setItem('user', user)
                 // 为 => 分发 login 事件，以保存用户信息和登录
                 this.$store.dispatch('login', user)
             },

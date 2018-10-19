@@ -19,7 +19,7 @@
       <div id="top-navbar-collapse" :class="['collapse', 'navbar-collapse', { in: showCollapsedNav }]">
         <ul class="nav navbar-nav">
           <li v-for="(item, index) in navList" :class="{ active: index === activeNavIndex }">
-            <a href="#" @click="changeNavIndex(index)">{{ item }}</a>
+            <router-link :to='item.url' @click="changeNavIndex(index)">{{ item.name }}</router-link>
           </li>
         </ul>
         <!-- 入口组件 -->
@@ -46,7 +46,7 @@
                     src: `${this.uploadsUrl}sites/ByvFbNlQYVwhvTyBgLdqitchoacDNznN.jpg`,
                     title: 'VuejsCaff'
                 },
-                navList: ['社区', '头条', '问答', '教程'],
+                navList: [{'name':'社区',"url":'/'}, {"name":'头条',"url":'/'}, {"name":'问答','url':'/'}, {"name":'教程','url':'/'},{"name":'测试','url':'/test'}],
                 activeNavIndex: 0,
                 showCollapsedNav: false
             }

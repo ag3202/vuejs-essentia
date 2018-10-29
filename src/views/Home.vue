@@ -16,6 +16,7 @@
         },
         beforeRouteEnter(to, from, next) {
             const fromName = from.name
+            const logout = to.params.logout
 
             next(vm => {
                 if (vm.$store.state.auth) {
@@ -24,8 +25,24 @@
                             vm.showMsg('注册成功')
                             break
                     }
+                } else if (logout) {
+                    vm.showMsg('操作成功')
                 }
             })
+        },
+        computed: {
+            // 用户登录状态
+            auth() {
+                return this.$store.state.auth
+            }
+        },
+        watch: {
+            // 监听 auth，它的值变为 false 时，显示操作成功提示
+            auth(value) {
+                if (!value) {
+                    this.showMsg('操作成功')
+                }
+            }
         },
         methods: {
             showMsg(msg, type = 'success') {

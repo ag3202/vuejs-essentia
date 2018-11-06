@@ -10,15 +10,19 @@ const auth = store.state.auth
 
 const router = new Router({
     mode: 'history',
+    linkExactActiveClass: 'active',
     routes
 })
 
 router.beforeEach((to,from,next)=>{
-   if (auth && to.path.indexOf('/auth/') !== -1){
-       next('/')
-   } else{
-       next()
-   }
+    if (
+        (auth && to.path.indexOf('/auth/') !== -1) ||
+        (!auth && to.meta.auth)
+    ) {
+        next('/')
+    } else {
+        next()
+    }
 });
 
 export default router

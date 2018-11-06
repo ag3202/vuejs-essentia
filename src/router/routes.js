@@ -25,5 +25,19 @@ export default [
         path: '*',
         // 重定向
         redirect: '/'
+    },
+    // EditUsers
+    {
+        path: '/users/1/edit',
+        name: 'EditUsers',
+        component: () => import('@/views/users/Edit.vue'),
+        children: [
+            {
+                path: '',
+                name: 'EditProfile',
+                component: () => import('@/views/users/Profile.vue'),
+                meta: {auth: true}
+            }
+        ]
     }
 ]
